@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial;
+        font-size: 18px;
+        text-align: center;
+    }
+    body {
+        margin: 10px;
+    }
+    .block-container {
+        font-size: 0px;
+        width: 100%;
+        bottom: 0px;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+    }
+    .block {
+        width: 10px;
+        background-color: #00B6FF;
+        display: inline-block;
+        margin: 1px;
+    }
+    .block.active {
+        background-color: #008CC4;
+    }
+    .block.yellow {
+        background-color: yellow
+    }
+    .controls {
+        padding-top: 7vw;
+    }
+    button {
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+        padding: 10px;
+        outline: none;
+        transition: background-color 0.3s, border 0.3s, color 0.3s;
+    }
+    button:hover {
+        background-color: black;
+        color: white;
+    }
+    button.build {
+        display: block;
+        margin: 10px auto;
+    }
+    button.build:hover {
+        background-color: #00B6FF;
+        border: 1px solid #00B6FF;
+        color: white;
+    }
+    .controls p {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+</style>
+<script src="main.js"></script>
+</head>
+<body>
+
+<div class="controls">
+    <!--<button class="build" onclick="build()">Build visualizer</button>-->
+    <button class="btn" onclick="bubble()">Bubble Sort</button>
+    <button class="btn" onclick="selection()">Selection Sort</button>
+    <p id="notice"></p>
+</div>
+<div class="block-container" id="block-container"></div>
+
+<script src="main.js"></script>
+<script>
+sorter = new Sorter(document.getElementById("block-container"));
+sorter.build(50, 450);
+running = false
+
+function bubble() {
+    if(running) {
+        notice("Wait till the algorithm finishes")
+        return;
+    };
+    sorter.build(50, 450);
+    running = true
+    sorter.bubbleSort(function() {
+        running = false
+    })
+}
+function selection() {
+    if(running) {
+        notice("Wait till the algorithm finishes")
+        return;
+    };
+    sorter.build(50, 450);
+    running = true
+    sorter.selectionSort(function () {
+        running = false
+    })
+}
+
+function notice(text) {
+    var el = document.getElementById("notice")
+    el.innerHTML = text
+    setTimeout(function() {
+        el.innerHTML = ""
+    }, 3000)
+}
+
+</script>
+</body>
+</html>
