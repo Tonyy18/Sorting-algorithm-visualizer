@@ -8,7 +8,6 @@
         box-sizing: border-box;
         font-family: Arial;
         font-size: 18px;
-        text-align: center;
     }
     body {
         margin: 10px;
@@ -20,21 +19,29 @@
         position: absolute;
         left: 0px;
         bottom: 0px;
+        white-space: no-wrap;
+        overflow: hidden;
     }
     .block {
         width: 10px;
-        background-color: #00B6FF;
         display: inline-block;
         margin: 1px;
     }
-    .block.active {
+    .block,
+    .color-codes .color.blue {
+        background-color: #00B6FF;
+    }
+    .block.active,
+    .color-codes .color.dark {
         background-color: #008CC4;
     }
-    .block.yellow {
+    .block.yellow,
+    .color-codes .color.yellow {
         background-color: yellow
     }
     .controls {
         padding-top: 7vw;
+        text-align: center;
     }
     button {
         border: 1px solid black;
@@ -61,11 +68,31 @@
         font-size: 15px;
         margin-top: 10px;
     }
+
+    .color-codes .color {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    .color-codes > div {
+        padding: 10px;
+    }
+    .color-codes .text {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 13px;
+    }
 </style>
 <script src="main.js"></script>
 </head>
 <body>
-
+<div class="color-codes">
+    <div><span class="color yellow"></span><p class="text">The current index in the array its analyzing</p></div>
+    <div><span class="color blue"></span><p class="text">Unsorted area</p></div>
+    <div><span class="color dark"></span><p class="text">Already in order. (Not interested anymore)</p></div>
+</div>
 <div class="controls">
     <!--<button class="build" onclick="build()">Build visualizer</button>-->
     <button class="btn" onclick="bubble()">Bubble Sort</button>

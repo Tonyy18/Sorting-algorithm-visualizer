@@ -12,6 +12,7 @@ function Sorter(container) {
             this.container.innerHTML += "<div class='block' style='height: " + height + "px'></div>"
         }
         this.blocks = this.container.getElementsByClassName("block")
+        document.getElementById("block-container").style.height = maxHeight + "px";
     }
     this.bubbleSort = (callback=null) => {
         bubbleSort(this.blocks, callback)
