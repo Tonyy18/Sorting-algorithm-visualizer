@@ -1,3 +1,4 @@
+const delay = 20;
 function Sorter(container) {
     this.container = container
 
@@ -46,7 +47,7 @@ function selectionSort(blocks, callback=null, start = 0, a = 0, smallest = null)
         setTimeout(function() {
             block.classList.remove("yellow")
             selectionSort(blocks, callback, start, a, smallest)
-        }, 20)
+        }, delay)
     } else {
         if(typeof callback == "function") callback();
         block.classList.remove("yellow")
@@ -91,7 +92,7 @@ function bubbleSort(blocks, callback=null, a = 0, order = true) {
     setTimeout(function() {
         block.classList.remove("yellow")
         bubbleSort(blocks, callback, a, order)
-    }, 20);
+    }, delay);
 
 }
 
