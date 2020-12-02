@@ -1,4 +1,4 @@
-const delay = 20;
+const delay = 5;
 function Sorter(container) {
     this.container = container
 
